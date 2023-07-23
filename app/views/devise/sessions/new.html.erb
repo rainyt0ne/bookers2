@@ -1,26 +1,48 @@
-<h2>Log in</h2>
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="ml-12 mt-2">
+        <h2>
+          <i class="fa-solid fa-right-to-bracket"></i>
+          <strong>
+            Log in
+          </strong>
+        </h2>
 
-<%= form_with model: @user, url: user_session_path do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+        <%= form_with model: @user, url: user_session_path do |f| %>
+        <div class="field mb-2 mt-2">
+          <i class="fa-solid fa-user-pen"></i>
+          <strong>
+            <%= f.label :name %></br>
+          </strong>
+          <%= f.text_field :name %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+        <div class="field mt-2">
+          <i class="fa-solid fa-key"></i>
+          <strong>
+            <%= f.label :password %><br />
+          </strong>
+          <%= f.password_field :password, autocomplete: "current-password" %>
+        </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <% if devise_mapping.rememberable? %>
+          <div class="field mt-2">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
+
+      <div class="actions">
+        <button type="f.submit" class="btn btn-info">
+          <strong>Log in</strong>
+        </button>
+      </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</main>
