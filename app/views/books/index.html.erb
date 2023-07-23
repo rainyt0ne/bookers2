@@ -1,2 +1,79 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<div>
+  <%= flash[:notice] %>
+</div>
+<div class="text-danger ml-3">
+<% if @book.errors.any? %>
+  <h2>
+    <%= @book.errors.count %> errors prohibited this book from being saved:
+  </h2>
+  <ul class="ml-5">
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+</div>
+
+<main>
+  <div class="container ml-12 mt-3 mx-auto">
+    <div class="row">
+      <div class="col-4">
+        <h2>
+          <i class="fa-solid fa-circle-info"></i>
+          <strong>
+            User info
+          </strong>
+        </h2>
+        <%= image_tag 'no_image.jpg', class: "border mb-2" %>
+
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>name</th>
+              <th>
+                <strong>
+                  <%= current_user.name %>
+                </strong>
+              </th>
+            </tr>
+            <tr>
+              <th>introduction</th>
+              <th><%= current_user.introduction %></th>
+            </tr>
+          </tbody>
+        </table>
+        <div class="row">
+          <a href="/users/edit">
+            <button type="button" class="btn btn-default btn-block border-dark">
+              <i class="fa-solid fa-gear"></i>
+              Edit User Information
+            </button>
+          </a>
+          <h2 class="pt-3 ml-3">
+            <i class="fa-solid fa-circle-plus"></i>
+            <strong>
+              New book
+            </strong>
+          </h2>
+          <%= form_with model:Book, url: '/books', method: :post do |f| %>
+          <div class="form-group pl-3">
+            <p>Title</p>
+            <%= f.text_field :title %>
+          </div>
+          <div class="form-group pl-3">
+          <p>Opinion</p>
+          <%= f.text_area :opinion %>
+          </div>
+          <div class="form-group pl-3">
+          <%= f.submit "Create Book", class: "btn btn-success" %>
+          </button>
+          </div>
+          <% end %>
+
+        </div>
+      </div>
+      <div class="col-8">
+      </div>
+    </div>
+  </div>
+</main>
