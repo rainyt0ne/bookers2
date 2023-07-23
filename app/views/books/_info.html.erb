@@ -1,0 +1,15 @@
+<div class="text-success">
+  <%= flash[:notice] %>
+</div>
+<div class="text-danger ml-3">
+<% if @book.errors.any? %>
+  <h2>
+    <%= @book.errors.count %> errors prohibited this book from being saved:
+  </h2>
+  <ul class="ml-5">
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+</div>
