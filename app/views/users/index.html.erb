@@ -7,33 +7,31 @@
         <h2>
           <i class="fa-solid fa-book-tanakh"></i>
           <strong>
-            Books
+            Users
           </strong>
         </h2>
         <table class="table">
           <thead>
             <tr>
               <th>
-                <strong>User image</strong>
+                <strong>image</strong>
               </th>
               <th>
-                <strong>Title</strong>
+                <strong>name</strong>
               </th>
-              <th>
-                <strong>Opinion</strong>
-              </th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
-            <% @books.each do |book| %>
+            <% @admins.each do |a| %>
             <tr>
               <td>
-                <%= link_to user_path(book.user.id) do %>
-                  <%= image_tag book.user.get_profile_image(100,100) %>
+                <%= link_to user_path(a) do %>
+                  <%= image_tag a.get_profile_image(100,100) %>
                 <% end %>
               </td>
-              <td><%= link_to book.title, book_path(book) %></td>
-              <td><%= book.body %></td>
+              <td><%= a.name %></td>
+              <td><%= link_to 'Show', user_path(a) %></td>
             </tr>
             <% end %>
           </tbody>

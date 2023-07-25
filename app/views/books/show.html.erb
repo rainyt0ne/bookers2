@@ -1,9 +1,9 @@
 <%= render 'books/info' %>
 <main>
-  <div class="container ml-12 mt-3 mx-auto">
+  <div class="container px-5 px-sm-0">
     <div class="row">
-      <%= render 'books/list' %>
-      <div class="col-md-8">
+      <%= render 'books/list', user: @user %>
+      <div class="col-md-8 offset-md-1">
         <h2>
           <i class="fa-solid fa-book-tanakh"></i>
           <strong>
@@ -14,13 +14,15 @@
           <tbody>
             <tr>
               <td>
-                <%= image_tag 'no_image.jpg' %>
-                <%= link_to current_user.name, user_path %>
+                <%= image_tag @u_image.get_profile_image(100,100), class: "border mb-2" %>
+                <%= link_to @books.user.name, user_path(@books.user.id) %>
               </td>
-              <td><%= link_to @book.title, book_path(@book) %></td>
-              <td><%= @book.opinion %></td>
-              <td><%= link_to "Edit", edit_book_path(@book), class: "btn btn-success" %></td>
-              <td><%= link_to "Destroy", book_path(@book), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-danger" %></td>
+              <td><%= link_to @books.title, book_path(@books) %></td>
+              <td><%= @books.body %></td>
+              <% if @books.user == current_user %>
+                <td><%= link_to "Edit", edit_book_path(@books), class: "btn btn-success" %></td>
+                <td><%= link_to "Destroy", book_path(@books), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-danger" %></td>
+              <% end %>
             </tr>
           </tbody>
         </table>

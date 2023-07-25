@@ -25,36 +25,36 @@
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
             <li class="nav-item mr-3">
-              <i class="fa-solid fa-house-user" style="color: #ffffff;"></i>
-              <%= link_to "Home", "/", class: 'text-light'  %>
+              <i class="fas fa-home" style="color: #ffffff;"></i>
+              <%= link_to "Home", user_path(current_user.id), class: 'text-light'  %>
             </li>
             <li class="nav-item mr-3">
-              <i class="fa-solid fa-link" style="color: #ffffff;"></i>
-              <%= link_to "About", about_path, class: 'text-light'  %>
+              <i class="fas fa-users" style="color: #ffffff;"></i>
+              <%= link_to "Users", users_path, class: 'text-light'  %>
             </li>
             <li class="nav-item mr-3">
-              <i class="fa-solid fa-book-tanakh" style="color: #ffffff;"></i>
+              <i class="fas fa-book-open" style="color: #ffffff;"></i>
               <%= link_to "Books", books_path, class: 'text-light'  %>
             </li>
             <li class="nav-item">
-              <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i>
+              <i class="fas fa-sign-out-alt" style="color: #ffffff;"></i>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'text-light'  %>
             </li>
           <% else %>
             <li class="nav-item mr-3 text-light">
-              <i class="fa-solid fa-house-user"></i>
+              <i class="fas fa-home" style="color: #ffffff;"></i>
               <%= link_to "Home", "/", class: 'text-light' %>
             </li>
             <li class="nav-item mr-3">
-              <i class="fa-solid fa-link" style="color: #ffffff;"></i>
-              <%= link_to "About", about_path, class: 'text-light'  %>
+              <i class="fas fa-link" style="color: #ffffff;"></i>
+              <%= link_to "About", '/home/about', class: 'text-light'  %>
             </li>
             <li class="nav-item mr-3">
               <i class="fa-solid fa-user-plus" style="color: #ffffff;"></i>
               <%= link_to "Sign up", new_user_registration_path, class: 'text-light'  %>
             </li>
             <li class="nav-item">
-              <i class="fa-solid fa-right-to-bracket" style="color: #ffffff;"></i>
+              <i class="fas fa-sign-in-alt" style="color: #ffffff;"></i>
               <%= link_to "Log in", new_user_session_path, class: 'text-light'  %>
             </li>
             <% end %>
